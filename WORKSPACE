@@ -1423,13 +1423,6 @@ go_repository(
     version = "v0.6.2",
 )
 
-go_repository(
-    name = "org_golang_google_grpc_cmd_protoc_gen_go_grpc",
-    importpath = "google.golang.org/grpc/cmd/protoc-gen-go-grpc",
-    sum = "h1:rNBFJjBCOgVr9pWD7rs/knKL4FRTKgpZmsRfV214zcA=",
-    version = "v1.3.0",
-)
-
 rules_proto_dependencies()
 
 rules_proto_toolchains()
