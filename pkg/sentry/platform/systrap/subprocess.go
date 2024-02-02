@@ -752,8 +752,7 @@ func (s *subprocess) switchToApp(c *context, ac *arch.Context64) (isSyscall bool
 	threadID := ctx.threadID()
 	if threadID != invalidThreadID {
 		if sysThread, ok := s.sysmsgThreads[threadID]; ok && sysThread.msg.Err != 0 {
-			msg := sysThread.msg
-			panic(fmt.Sprintf("stub thread %d failed: err 0x%x line %d: %s", sysThread.thread.tid, msg.Err, msg.Line, msg))
+			return false, false, sysThread.msg.ConvertSysmsgErr()
 		}
 		log.Warningf("systrap: found unexpected ThreadContext.ThreadID field, expected %d found %d", invalidThreadID, threadID)
 	}
