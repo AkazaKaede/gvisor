@@ -35,6 +35,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_overlay = True,
     test = "//test/syscalls/linux:aio_test",
 )
@@ -65,6 +66,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     one_sandbox = False,
     test = "//test/syscalls/linux:cgroup_test",
 )
@@ -144,6 +146,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_host_fifo = True,
     one_sandbox = False,
     test = "//test/syscalls/linux:pipe_external_test",
@@ -182,13 +185,13 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_overlay = True,
     test = "//test/syscalls/linux:exec_test",
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_overlay = True,
     test = "//test/syscalls/linux:exec_binary_test",
 )
@@ -219,12 +222,13 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
+    shard_count = more_shards,
     test = "//test/syscalls/linux:fcntl_test",
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_overlay = True,
     test = "//test/syscalls/linux:flock_test",
 )
@@ -270,7 +274,9 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_overlay = True,
+    shard_count = more_shards,
     test = "//test/syscalls/linux:getdents_test",
 )
 
@@ -283,7 +289,7 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_overlay = True,
     test = "//test/syscalls/linux:inotify_test",
 )
@@ -391,7 +397,9 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_overlay = True,
+    shard_count = more_shards,
     test = "//test/syscalls/linux:mount_test",
 )
 
@@ -409,7 +417,7 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     test = "//test/syscalls/linux:msync_test",
 )
 
@@ -441,6 +449,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_hostinet = True,
     test = "//test/syscalls/linux:packet_socket_raw_test",
 )
@@ -514,7 +523,8 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
+    shard_count = more_shards,
     test = "//test/syscalls/linux:proc_test",
 )
 
@@ -547,6 +557,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     test = "//test/syscalls/linux:ptrace_test",
 )
 
@@ -578,6 +589,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_hostinet = True,
     test = "//test/syscalls/linux:raw_socket_icmp_test",
 )
@@ -607,14 +619,14 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_fusefs = True,
     add_overlay = True,
     test = "//test/syscalls/linux:readv_test",
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_fusefs = True,
     add_overlay = True,
     test = "//test/syscalls/linux:rename_test",
@@ -681,6 +693,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_overlay = True,
     test = "//test/syscalls/linux:splice_test",
 )
@@ -791,7 +804,7 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_hostinet = True,
     test = "//test/syscalls/linux:socket_ip_tcp_loopback_non_blocking_test",
 )
@@ -830,7 +843,7 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_hostinet = True,
     test = "//test/syscalls/linux:socket_ipv4_udp_unbound_loopback_test",
 )
@@ -932,8 +945,9 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
     add_hostinet = True,
+    shard_count = most_shards,
     test = "//test/syscalls/linux:socket_stream_local_test",
 )
 
@@ -980,7 +994,8 @@ syscall_test(
 )
 
 syscall_test(
-    size = "medium",
+    size = "large",
+    shard_count = more_shards,
     test = "//test/syscalls/linux:socket_unix_stream_test",
 )
 
@@ -1019,6 +1034,7 @@ syscall_test(
 )
 
 syscall_test(
+    size = "large",
     add_fusefs = True,
     add_overlay = True,
     test = "//test/syscalls/linux:stat_test",
@@ -1102,6 +1118,8 @@ syscall_test(
 syscall_test(
     # TODO(b/318948806): tun.tunEndpoint is leaked.
     leak_check = False,
+    # TODO(b/110961832): /dev/net/tun does not support S/R.
+    save = False,
     test = "//test/syscalls/linux:tuntap_test",
 )
 
@@ -1204,6 +1222,7 @@ syscall_test(
 )
 
 syscall_test(
-    size = "small",
+    size = "large",
+    shard_count = more_shards,
     test = "//test/syscalls/linux:close_range_test",
 )
